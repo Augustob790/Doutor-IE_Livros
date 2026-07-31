@@ -2,7 +2,7 @@ import 'package:doutor_ie_test/core/infra/base_response.dart';
 import 'package:doutor_ie_test/modules/books/domain/models/book.dart';
 import 'package:doutor_ie_test/modules/books/domain/models/book_create_response.dart';
 import 'package:doutor_ie_test/modules/books/domain/repositories/books_repository.dart';
-import 'package:doutor_ie_test/modules/books/ui/book_form_viewmodel.dart';
+import 'package:doutor_ie_test/modules/books/ui/create_book/book_form_viewmodel.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -22,23 +22,40 @@ void main() {
     await viewModel.save('Novo', const <BookIndex>[]);
     expect(repository.updated, isTrue);
   });
+
+  test('expõe erro e não retorna livro quando criação falha', () async {
+    final repository = _FakeRepository(createSucceeds: false);
+    final viewModel = BookFormViewModel(repository: repository);
+
+    final result = await viewModel.save('Manual', const <BookIndex>[]);
+
+    expect(result, isNull);
+    expect(viewModel.errorMessage, isNotNull);
+    expect(viewModel.createBookResponse.value.isSuccess, isFalse);
+  });
 }
 
 class _FakeRepository implements BooksRepository {
+  _FakeRepository({this.createSucceeds = true});
+
+  final bool createSucceeds;
   bool created = false;
   bool updated = false;
   @override
   Future<BaseResponse<BookCreateResponse>> createBook(Book book) async {
     created = true;
-    return BaseResponse<BookCreateResponse>.success(
-      data: BookCreateResponse(
-          id: '1',
-          publisherUserId: '24',
-          title: book.title,
-          createdAt: null,
-          updatedAt: null),
-      statusCode: 201,
-    );
+    return createSucceeds
+        ? BaseResponse<BookCreateResponse>.success(
+            data: BookCreateResponse(
+              id: '1',
+              publisherUserId: '24',
+              title: book.title,
+              createdAt: null,
+              updatedAt: null,
+            ),
+            statusCode: 201,
+          )
+        : BaseResponse<BookCreateResponse>.genericError();
   }
 
   @override

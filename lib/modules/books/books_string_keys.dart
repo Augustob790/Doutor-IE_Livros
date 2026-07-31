@@ -2,6 +2,10 @@ class BooksStringKeys {
   BooksStringKeys._();
 
   static const String title = 'books.title';
+  static const String subtitle = 'books.subtitle';
+  static const String tableTitle = 'books.table_title';
+  static const String tableIndexes = 'books.table_indexes';
+  static const String tableActions = 'books.table_actions';
   static const String formTitle = 'books.form_title';
   static const String create = 'books.create';
   static const String save = 'books.save';
@@ -11,6 +15,8 @@ class BooksStringKeys {
   static const String deleteTitle = 'books.delete_title';
   static const String deleteConfirmation = 'books.delete_confirmation';
   static const String empty = 'books.empty';
+  static const String emptyTitle = 'books.empty_title';
+  static const String emptyMessage = 'books.empty_message';
   static const String noIndexes = 'books.no_indexes';
   static const String indexes = 'books.indexes';
   static const String add = 'books.add';
@@ -21,4 +27,14 @@ class BooksStringKeys {
   static const String pageValue = 'books.page_value';
   static const String indexesCount = 'books.indexes_count';
   static const String requiredTitle = 'books.required_title';
+  static const String requiredIndex = 'books.required_index';
+  static const String formSubtitle = 'books.form_subtitle';
+  static const String bookData = 'books.book_data';
+  static const String indexesHint = 'books.indexes_hint';
+  static const String deleteSuccess = 'books.delete_success';
+  static const String deleteError = 'books.delete_error';
+  static const String saveError = 'books.save_error';
+  static const String editTooltip = 'books.edit_tooltip';
+  static const String deleteTooltip = 'books.delete_tooltip';
+  static const String openTooltip = 'books.open_tooltip';
 }

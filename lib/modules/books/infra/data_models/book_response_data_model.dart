@@ -3,7 +3,8 @@ import 'package:doutor_ie_test/modules/books/domain/models/book_mutation_respons
 
 class BookResponseDataModel {
   const BookResponseDataModel._();
-  static BookMutationResponse mutationFromJson(Map<String, dynamic> json) => BookMutationResponse(
+  static BookMutationResponse mutationFromJson(Map<String, dynamic> json) =>
+      BookMutationResponse(
         id: (json['id'] ?? '').toString(),
         publisherUserId: (json['usuario_publicador_id'] ?? '').toString(),
         title: (json['titulo'] ?? '').toString(),

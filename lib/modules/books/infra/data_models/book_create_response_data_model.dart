@@ -9,7 +9,9 @@ class BookCreateResponseDataModel {
     );
     return BookCreateResponse(
       id: (data['id'] ?? data['_id'] ?? '').toString(),
-      publisherUserId: (data['usuario_publicador_id'] ?? data['publisher_user_id'] ?? '').toString(),
+      publisherUserId:
+          (data['usuario_publicador_id'] ?? data['publisher_user_id'] ?? '')
+              .toString(),
       title: (data['titulo'] ?? data['title'] ?? '').toString(),
       createdAt: DateTime.tryParse((data['created_at'] ?? '').toString()),
       updatedAt: DateTime.tryParse((data['updated_at'] ?? '').toString()),

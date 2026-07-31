@@ -3,7 +3,7 @@ import 'package:doutor_ie_test/core/utils/log.dart';
 import 'package:doutor_ie_test/core/viewmodels/async_viewmodel.dart';
 import 'package:doutor_ie_test/modules/books/domain/models/book.dart';
 import 'package:doutor_ie_test/modules/books/domain/repositories/books_repository.dart';
-import 'package:doutor_ie_test/modules/books/ui/books_store.dart';
+import 'package:doutor_ie_test/modules/books/store/books_store.dart';
 import 'package:flutter/material.dart';
 
 class BooksViewModel extends ChangeNotifier with AsyncViewModel {

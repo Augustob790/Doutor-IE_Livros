@@ -16,7 +16,8 @@ class BookFormViewModel extends ChangeNotifier with AsyncViewModel {
       ValueNotifier<BaseResponse<Book>>(BaseResponse<Book>.none());
   final ValueNotifier<BaseResponse<BookCreateResponse>> createBookResponse =
       ValueNotifier<BaseResponse<BookCreateResponse>>(
-          BaseResponse<BookCreateResponse>.none());
+    BaseResponse<BookCreateResponse>.none(),
+  );
 
   Future<Book?> save(String title, List<BookIndex> indexes) async {
     final draft = Book(id: book?.id, title: title, indexes: indexes);
