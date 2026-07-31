@@ -2,6 +2,13 @@ class AuthStringKeys {
   AuthStringKeys._();
 
   static const String appTitle = 'auth.app_title';
+  static const String welcomeTitle = 'auth.welcome_title';
+  static const String welcomeSubtitle = 'auth.welcome_subtitle';
+  static const String accessTitle = 'auth.access_title';
+  static const String accessSubtitle = 'auth.access_subtitle';
+  static const String emailHint = 'auth.email_hint';
+  static const String passwordHint = 'auth.password_hint';
+  static const String securityCaption = 'auth.security_caption';
   static const String email = 'auth.email';
   static const String password = 'auth.password';
   static const String signIn = 'auth.sign_in';

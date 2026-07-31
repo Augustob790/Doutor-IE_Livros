@@ -1,5 +1,4 @@
 import 'package:doutor_ie_test/core/i18n/i18n_loader.dart';
-import 'package:doutor_ie_test/core/i18n/strings_pt.dart';
 import 'package:doutor_ie_test/core/infra/login_session_storage.dart';
 import 'package:doutor_ie_test/core/infra/base_response.dart';
 import 'package:doutor_ie_test/core/utils/log.dart';
@@ -8,7 +7,7 @@ import 'package:doutor_ie_test/modules/auth/domain/repositories/auth_repository.
 import 'package:doutor_ie_test/modules/auth/domain/models/login_credentials.dart';
 import 'package:doutor_ie_test/modules/auth/domain/models/login_response_model.dart';
 import 'package:doutor_ie_test/modules/auth/auth_string_keys.dart';
-import 'package:doutor_ie_test/modules/auth/string_pt.dart';
+import 'package:doutor_ie_test/modules/books/strings.dart';
 import 'package:flutter/material.dart';
 
 class LoginViewModel extends ChangeNotifier with AsyncViewModel {
@@ -20,9 +19,7 @@ class LoginViewModel extends ChangeNotifier with AsyncViewModel {
 
   final AuthRepository _repository;
   final LoginSessionStorage _sessionStorage;
-  static final I18nLoader _i18n = I18nLoader(<String, Map<String, String>>{
-    'pt': <String, String>{...stringsPt, ...authStringsPt},
-  });
+  final I18nLoader _i18n = I18nLoader(strings);
   final ValueNotifier<BaseResponse<LoginResponseModel>> loginResponse =
       ValueNotifier<BaseResponse<LoginResponseModel>>(
           BaseResponse<LoginResponseModel>.none());
