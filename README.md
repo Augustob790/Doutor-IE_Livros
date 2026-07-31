@@ -38,7 +38,7 @@ Tentei seguir os princípios do SOLID não apenas como regras fixas, mas para ma
 
 ## Executando o Projeto
 
-Você deve configurar a API local criando o arquivo `.env` na raiz do projeto contendo: `API_BASE_URL=http://18.231.37.245:8080/api/v1`
+Você deve configurar a API local criando o arquivo `.env` na raiz do projeto contendo: `API_BASE_URL=http://seu-ip:porta/api/v1`
 
 **Rodando no Emulador / Dispositivo físico ou Web (Chrome):**
 ```bash

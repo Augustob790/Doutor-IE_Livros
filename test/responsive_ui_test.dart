@@ -26,8 +26,7 @@ void main() {
     IoD.instance.registerSingleton<AppNavigator>(_FakeNavigator());
   });
 
-  testWidgets('login alterna apresentação entre desktop e mobile',
-      (WidgetTester tester) async {
+  testWidgets('login alterna apresentação entre desktop e mobile', (WidgetTester tester) async {
     await _setViewport(tester, const Size(1280, 900));
     await tester.pumpWidget(_app(home: _loginScreen()));
 
@@ -48,8 +47,7 @@ void main() {
     expect(find.text('Acesse sua conta'), findsOneWidget);
   });
 
-  testWidgets('livros usa tabela no desktop e cartões no mobile',
-      (WidgetTester tester) async {
+  testWidgets('livros usa tabela no desktop e cartões no mobile', (WidgetTester tester) async {
     await _setViewport(tester, const Size(1280, 900));
     await tester.pumpWidget(_app(home: _booksScreen()));
     await tester.pumpAndSettle();
@@ -68,8 +66,7 @@ void main() {
     expect(find.byType(FloatingActionButton), findsOneWidget);
   });
 
-  testWidgets('formulário mantém cabeçalho e ações fixos durante o scroll',
-      (WidgetTester tester) async {
+  testWidgets('formulário mantém cabeçalho e ações fixos durante o scroll', (WidgetTester tester) async {
     await _setViewport(tester, const Size(390, 700));
     await tester.pumpWidget(_app(home: _bookFormScreen()));
 
@@ -83,10 +80,9 @@ void main() {
       of: find.byType(SingleChildScrollView),
       matching: find.byType(Scrollable),
     );
-    final ScrollableState contentScrollState =
-        tester.stateList<ScrollableState>(contentScrollable).firstWhere(
-              (ScrollableState state) => state.position.maxScrollExtent > 0,
-            );
+    final ScrollableState contentScrollState = tester.stateList<ScrollableState>(contentScrollable).firstWhere(
+          (ScrollableState state) => state.position.maxScrollExtent > 0,
+        );
 
     expect(scaffold.bottomNavigationBar, isNotNull);
     expect(bookData.hitTestable(), findsOneWidget);
@@ -166,12 +162,9 @@ class _FakeNavigator implements AppNavigator {
   @override
   void pop<T extends Object?>({T? result}) {}
   @override
-  Future<T?> push<T extends Object?>(String path, {Object? extra}) async =>
-      null;
+  Future<T?> push<T extends Object?>(String path, {Object? extra}) async => null;
   @override
-  Future<T?> pushReplacement<T extends Object?>(String path,
-          {Object? extra}) async =>
-      null;
+  Future<T?> pushReplacement<T extends Object?>(String path, {Object? extra}) async => null;
 }
 
 class _FakeAuthRepository implements AuthRepository {
@@ -190,8 +183,7 @@ class _FakeBooksRepository implements BooksRepository {
   );
 
   @override
-  Future<BaseResponse<List<Book>>> fetchBooks() async =>
-      BaseResponse<List<Book>>.success(
+  Future<BaseResponse<List<Book>>> fetchBooks() async => BaseResponse<List<Book>>.success(
         data: const <Book>[book],
         statusCode: 200,
       );
@@ -201,14 +193,11 @@ class _FakeBooksRepository implements BooksRepository {
       BaseResponse<BookCreateResponse>.genericError();
 
   @override
-  Future<BaseResponse<void>> deleteBook(String id) async =>
-      BaseResponse<void>.success(statusCode: 204);
+  Future<BaseResponse<void>> deleteBook(String id) async => BaseResponse<void>.success(statusCode: 204);
 
   @override
-  Future<BaseResponse<Book>> fetchBook(String id) async =>
-      BaseResponse<Book>.success(data: book, statusCode: 200);
+  Future<BaseResponse<Book>> fetchBook(String id) async => BaseResponse<Book>.success(data: book, statusCode: 200);
 
   @override
-  Future<BaseResponse<Book>> updateBook(Book book) async =>
-      BaseResponse<Book>.success(data: book, statusCode: 200);
+  Future<BaseResponse<Book>> updateBook(Book book) async => BaseResponse<Book>.success(data: book, statusCode: 200);
 }

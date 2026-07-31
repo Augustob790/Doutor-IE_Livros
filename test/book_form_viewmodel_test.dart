@@ -17,8 +17,7 @@ void main() {
 
   test('atualiza livro quando há livro em edição', () async {
     final repository = _FakeRepository();
-    final viewModel = BookFormViewModel(
-        repository: repository, book: const Book(id: '1', title: 'Antigo'));
+    final viewModel = BookFormViewModel(repository: repository, book: const Book(id: '1', title: 'Antigo'));
     await viewModel.save('Novo', const <BookIndex>[]);
     expect(repository.updated, isTrue);
   });
@@ -65,12 +64,9 @@ class _FakeRepository implements BooksRepository {
   }
 
   @override
-  Future<BaseResponse<void>> deleteBook(String id) async =>
-      BaseResponse<void>.success(statusCode: 204);
+  Future<BaseResponse<void>> deleteBook(String id) async => BaseResponse<void>.success(statusCode: 204);
   @override
-  Future<BaseResponse<Book>> fetchBook(String id) async =>
-      BaseResponse<Book>.genericError();
+  Future<BaseResponse<Book>> fetchBook(String id) async => BaseResponse<Book>.genericError();
   @override
-  Future<BaseResponse<List<Book>>> fetchBooks() async =>
-      BaseResponse<List<Book>>.success(data: const <Book>[]);
+  Future<BaseResponse<List<Book>>> fetchBooks() async => BaseResponse<List<Book>>.success(data: const <Book>[]);
 }

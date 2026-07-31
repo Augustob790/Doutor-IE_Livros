@@ -13,8 +13,7 @@ void main() {
 
     expect(store.findById('1')?.title, 'Manual');
     expect(store.findById('inexistente'), isNull);
-    expect(() => store.books.add(const Book(title: 'Outro')),
-        throwsUnsupportedError);
+    expect(() => store.books.add(const Book(title: 'Outro')), throwsUnsupportedError);
   });
 
   test('carrega livros e transita para sucesso', () async {
@@ -76,26 +75,17 @@ class _FakeBooksRepository implements BooksRepository {
       : BaseResponse<List<Book>>.genericError();
 
   @override
-  Future<BaseResponse<Book>> fetchBook(String id) async =>
-      BaseResponse<Book>.success(data: book, statusCode: 200);
+  Future<BaseResponse<Book>> fetchBook(String id) async => BaseResponse<Book>.success(data: book, statusCode: 200);
 
   @override
-  Future<BaseResponse<BookCreateResponse>> createBook(Book value) async =>
-      BaseResponse<BookCreateResponse>.success(
-          data: BookCreateResponse(
-              id: '1',
-              publisherUserId: '24',
-              title: value.title,
-              createdAt: null,
-              updatedAt: null),
-          statusCode: 201);
+  Future<BaseResponse<BookCreateResponse>> createBook(Book value) async => BaseResponse<BookCreateResponse>.success(
+      data: BookCreateResponse(id: '1', publisherUserId: '24', title: value.title, createdAt: null, updatedAt: null),
+      statusCode: 201);
 
   @override
-  Future<BaseResponse<Book>> updateBook(Book value) async =>
-      BaseResponse<Book>.success(data: value, statusCode: 200);
+  Future<BaseResponse<Book>> updateBook(Book value) async => BaseResponse<Book>.success(data: value, statusCode: 200);
 
   @override
-  Future<BaseResponse<void>> deleteBook(String id) async => deleteSucceeds
-      ? BaseResponse<void>.success(statusCode: 204)
-      : BaseResponse<void>.genericError();
+  Future<BaseResponse<void>> deleteBook(String id) async =>
+      deleteSucceeds ? BaseResponse<void>.success(statusCode: 204) : BaseResponse<void>.genericError();
 }

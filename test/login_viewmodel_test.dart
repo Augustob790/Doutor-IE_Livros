@@ -23,8 +23,7 @@ void main() {
       sessionStorage: storage,
     );
 
-    final authenticated =
-        await viewModel.login('  usuario@teste.com ', '123456');
+    final authenticated = await viewModel.login('  usuario@teste.com ', '123456');
 
     expect(authenticated, isTrue);
     expect(repository.credentials?.email, 'usuario@teste.com');
