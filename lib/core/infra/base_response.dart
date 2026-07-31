@@ -14,22 +14,22 @@ class BaseResponse<T> {
 
   BaseResponse.none() : status = ResponseStatus.none;
   BaseResponse.loading() : status = ResponseStatus.loading;
-  BaseResponse.success({this.data, this.statusCode})
-      : status = ResponseStatus.success;
-  BaseResponse.error(this.statusCode, {this.error})
-      : status = ResponseStatus.error;
+  BaseResponse.success({this.data, this.statusCode}) : status = ResponseStatus.success;
+  BaseResponse.error(this.statusCode, {this.error}) : status = ResponseStatus.error;
 
   BaseResponse.genericError()
       : status = ResponseStatus.error,
         error = ResponseError(
-            errorCode: ResponseErrorCodes.GENERIC_ERROR,
-            message: "Erro genérico");
+          errorCode: ResponseErrorCodes.GENERIC_ERROR,
+          message: "Erro genérico",
+        );
 
   BaseResponse.connectionError()
       : status = ResponseStatus.error,
         error = ResponseError(
-            errorCode: ResponseErrorCodes.NETWORK_ERROR,
-            message: "Erro de conexão");
+          errorCode: ResponseErrorCodes.NETWORK_ERROR,
+          message: "Erro de conexão",
+        );
 
   static BaseResponse<T> handleResponse<T>(
     BaseResponse<Map<String, dynamic>> response, {
@@ -58,11 +58,12 @@ class ResponseError {
   final StackTrace? stackTrace;
   final dynamic error;
 
-  ResponseError(
-      {required this.errorCode,
-      required this.message,
-      this.stackTrace,
-      this.error});
+  ResponseError({
+    required this.errorCode,
+    required this.message,
+    this.stackTrace,
+    this.error,
+  });
 }
 
 class ResponseErrorCodes {
