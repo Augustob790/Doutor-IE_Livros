@@ -1,10 +1,24 @@
-# doutor_ie_test
+# Doutor-IE Livros
 
-A new Flutter project.
+Aplicação Flutter responsiva para gestão de livros e índices, preparada para
+Android, iOS, desktop e navegador.
 
-## Getting Started
+## Execução
 
-This project is a starting point for a Flutter application.
+Configure `API_BASE_URL` no arquivo `.env` ou por `--dart-define` e execute:
+
+```bash
+flutter run -d chrome --dart-define=API_BASE_URL=https://api.exemplo.com
+```
+
+Para gerar a versão web:
+
+```bash
+flutter build web --release --dart-define=API_BASE_URL=https://api.exemplo.com
+```
+
+O mesmo código adapta a navegação e os componentes para telas compactas e
+expandidas.
 
 A few resources to get you started if this is your first Flutter project:
 

@@ -1,12 +1,11 @@
 {
-    "name": "doutor_ie_test",
-    "short_name": "doutor_ie_test",
+    "name": "Doutor-IE Livros",
+    "short_name": "Doutor-IE",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
-    "orientation": "portrait-primary",
+    "background_color": "#F4F7F5",
+    "theme_color": "#0E312A",
+    "description": "Biblioteca digital responsiva Doutor-IE.",
     "prefer_related_applications": false,
     "icons": [
         {
