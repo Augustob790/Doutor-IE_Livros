@@ -9,9 +9,13 @@ class AppValidators {
     return null;
   }
 
-  static String? email(String? value, {String message = 'E-mail inválido'}) {
+  static String? email(
+    String? value, {
+    String message = 'E-mail inválido',
+    String requiredMessage = 'E-mail é obrigatório',
+  }) {
     if (value == null || value.trim().isEmpty) {
-      return 'E-mail é obrigatório';
+      return requiredMessage;
     }
     if (!value.contains('@') || !value.contains('.')) {
       return message;
@@ -19,12 +23,18 @@ class AppValidators {
     return null;
   }
 
-  static String? password(String? value, {int minLength = 6}) {
+  static String? password(
+    String? value, {
+    int minLength = 6,
+    String requiredMessage = 'Senha é obrigatória',
+    String? minLengthMessage,
+  }) {
     if (value == null || value.isEmpty) {
-      return 'Senha é obrigatória';
+      return requiredMessage;
     }
     if (value.length < minLength) {
-      return 'A senha deve ter no mínimo $minLength caracteres';
+      return minLengthMessage ??
+          'A senha deve ter no mínimo $minLength caracteres';
     }
     return null;
   }

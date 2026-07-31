@@ -6,4 +6,7 @@ class AppRoutesPath {
   static const String bookForm = '/livros/novo';
   static const String bookDetail = '/livros/:id';
   static const String bookEdit = '/livros/:id/editar';
+
+  static String bookDetailPath(String id) => '/livros/$id';
+  static String bookEditPath(String id) => '/livros/$id/editar';
 }

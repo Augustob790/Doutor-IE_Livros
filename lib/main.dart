@@ -21,7 +21,8 @@ Future<void> main() async {
   BaseModule().initialize();
 
   final AppState appState = IoD.instance.get<AppState>();
-  final String? token = await IoD.instance.get<LoginSessionStorage>().getToken();
+  final String? token =
+      await IoD.instance.get<LoginSessionStorage>().getToken();
   appState.setIsLogged(token?.isNotEmpty == true);
   appState.setCanStartApp(true);
 
@@ -32,26 +33,34 @@ Future<void> main() async {
 }
 
 class ArchitectureApp extends StatelessWidget {
-  const ArchitectureApp({super.key, required this.router, required this.appState});
+  const ArchitectureApp({
+    super.key,
+    required this.router,
+    required this.appState,
+  });
 
   final GoRouter router;
   final AppState appState;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Doutor-IE Livros',
-      theme: AppTheme.lightTheme,
-      themeMode: ThemeMode.light,
-      routerConfig: router,
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('pt', 'BR'),
-      ],
+    return ListenableBuilder(
+      listenable: appState,
+      builder: (BuildContext context, Widget? child) => MaterialApp.router(
+        title: 'Doutor-IE Livros',
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: appState.themeMode,
+        routerConfig: router,
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const <Locale>[
+          Locale('pt', 'BR'),
+        ],
+      ),
     );
   }
 }

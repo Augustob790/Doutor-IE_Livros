@@ -28,6 +28,7 @@ class AppTheme {
     );
 
     return ThemeData(
+      useMaterial3: true,
       brightness: Brightness.light,
       colorScheme: colorScheme,
       scaffoldBackgroundColor: AppColors.lightBackground,
@@ -36,6 +37,7 @@ class AppTheme {
       textTheme: textTheme,
       primaryTextTheme: textTheme,
       dividerColor: AppColors.lightBorder,
+      visualDensity: VisualDensity.standard,
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.transparent,
         foregroundColor: AppColors.lightForeground,
@@ -68,6 +70,18 @@ class AppTheme {
             fontSize: 14,
             letterSpacing: -0.1,
           ),
+        ),
+      ),
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(
+          backgroundColor: AppColors.lightPrimary,
+          foregroundColor: AppColors.lightPrimaryForeground,
+          minimumSize: const Size(0, 48),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(_radius),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+          textStyle: textTheme.labelLarge,
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -128,6 +142,16 @@ class AppTheme {
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       ),
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: AppColors.lightPrimary,
+        foregroundColor: AppColors.lightPrimaryForeground,
+        elevation: 2,
+      ),
+      dialogTheme: DialogThemeData(
+        backgroundColor: AppColors.lightCard,
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+      ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         selectedLabelStyle:
             textTheme.labelSmall?.copyWith(fontWeight: FontWeight.w700),
@@ -157,6 +181,7 @@ class AppTheme {
     );
 
     return ThemeData(
+      useMaterial3: true,
       brightness: Brightness.dark,
       colorScheme: colorScheme,
       scaffoldBackgroundColor: colorScheme.surface,
@@ -187,6 +212,18 @@ class AppTheme {
             fontSize: 14,
             // letterSpacing: -0.1,
           ),
+        ),
+      ),
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(
+          backgroundColor: AppColors.darkPrimary,
+          foregroundColor: AppColors.darkPrimaryForeground,
+          minimumSize: const Size(0, 48),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(_radius),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+          textStyle: textTheme.labelLarge,
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -228,6 +265,15 @@ class AppTheme {
         ),
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      ),
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: AppColors.darkPrimary,
+        foregroundColor: AppColors.darkPrimaryForeground,
+      ),
+      dialogTheme: DialogThemeData(
+        backgroundColor: AppColors.darkCard,
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         selectedLabelStyle:

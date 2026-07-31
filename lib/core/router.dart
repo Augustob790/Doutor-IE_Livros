@@ -48,7 +48,7 @@ class AppState extends ChangeNotifier {
   bool _hasError = false;
   bool _hasRedirect = false;
   String? _redirectPath = '';
-  ThemeMode _themeMode = ThemeMode.light;
+  ThemeMode _themeMode = ThemeMode.system;
 
   bool? get canStartApp => _canStartApp;
   bool get isLogged => _isLogged;

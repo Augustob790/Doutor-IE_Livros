@@ -55,13 +55,13 @@ class AppColors {
   static const Color overlayDark = Color(0x33000000);
 
   // LIGHT MODE
-  static const Color lightBackground = Color(0xFFFCFCFC);
-  static const Color lightForeground = Color(0xFF171717);
-  static const Color lightCard = Color(0xFFF7F7F7);
+  static const Color lightBackground = Color(0xFFF4F7F5);
+  static const Color lightForeground = Color(0xFF17211E);
+  static const Color lightCard = Color(0xFFFFFFFF);
   static const Color lightCardForeground = Color(0xFF171717);
   static const Color lightPopover = Color(0xFFF7F7F7);
   static const Color lightPopoverForeground = Color(0xFF171717);
-  static const Color lightPrimary = Color(0xFF245A73);
+  static const Color lightPrimary = brandDarkGreen;
   static const Color lightPrimaryForeground = Color(0xFFFCFCFC);
   static const Color lightSecondary = Color(0xFFF0F0F0);
   static const Color lightSecondaryForeground = Color(0xFF171717);
@@ -74,8 +74,8 @@ class AppColors {
   static const Color lightBorder = Color(0x1A000000);
   static const Color lightInput = Color(0x1A000000);
   static const Color lightRing = Color(0xFF245A73);
-  static const Color lightPrimaryTint = Color(0xFFE2EEF2);
-  static const Color lightPrimaryTintStrong = Color(0xFFC8DEE6);
+  static const Color lightPrimaryTint = Color(0xFFE5F3ED);
+  static const Color lightPrimaryTintStrong = Color(0xFFCBE8DB);
   static const Color lightAccentTint = Color(0xFFF3EAD7);
   static const Color lightAccentTintStrong = Color(0xFFE7D4AF);
   static const Color lightDestructiveTint = Color(0xFFF9E5E5);
@@ -102,7 +102,7 @@ class AppColors {
   static const Color darkCardForeground = Color(0xFFFAFAFA);
   static const Color darkPopover = Color(0xFF171717);
   static const Color darkPopoverForeground = Color(0xFFFAFAFA);
-  static const Color darkPrimary = Color(0xFF009B49);
+  static const Color darkPrimary = brandBrightGreen;
   static const Color darkPrimaryForeground = Color(0xFF0A0A0A);
   static const Color darkSecondary = Color(0xFF262626);
   static const Color darkSecondaryForeground = Color(0xFFFAFAFA);
