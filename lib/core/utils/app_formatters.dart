@@ -53,19 +53,26 @@ class AppFormatters {
         FilteringTextInputFormatter.allow(RegExp(r'[0-9.,]')),
       ];
 
-  static String formatCurrency(double value) => UtilBrasilFields.obterReal(value);
+  static String formatCurrency(double value) =>
+      UtilBrasilFields.obterReal(value);
 
-  static String formatCurrencyNoSymbol(double value) => UtilBrasilFields.obterReal(value, moeda: false);
+  static String formatCurrencyNoSymbol(double value) =>
+      UtilBrasilFields.obterReal(value, moeda: false);
 
-  static String formatCostPerKm(double value) => '${UtilBrasilFields.obterReal(value)}/km';
+  static String formatCostPerKm(double value) =>
+      '${UtilBrasilFields.obterReal(value)}/km';
 
-  static String formatMonthyCost(double value) => '${UtilBrasilFields.obterReal(value)}/mês';
+  static String formatMonthyCost(double value) =>
+      '${UtilBrasilFields.obterReal(value)}/mês';
 
-  static String formatKm(double value) => '${NumberFormat('#,##0', 'pt_BR').format(value)} km';
+  static String formatKm(double value) =>
+      '${NumberFormat('#,##0', 'pt_BR').format(value)} km';
 
-  static String formatKmInt(int value) => '${NumberFormat('#,##0', 'pt_BR').format(value)} km';
+  static String formatKmInt(int value) =>
+      '${NumberFormat('#,##0', 'pt_BR').format(value)} km';
 
-  static String formatPercent(double value) => '${value.toStringAsFixed(1).replaceAll('.', ',')}%';
+  static String formatPercent(double value) =>
+      '${value.toStringAsFixed(1).replaceAll('.', ',')}%';
 
   static String formatDecimal(double value, {int decimalPlaces = 2}) =>
       value.toStringAsFixed(decimalPlaces).replaceAll('.', ',');
@@ -73,18 +80,28 @@ class AppFormatters {
   static String formatKmDecimal(double value, {int decimalPlaces = 1}) =>
       '${formatDecimal(value, decimalPlaces: decimalPlaces)} km';
 
-  static String formatDate(DateTime date) => DateFormat("d 'de' MMMM 'de' yyyy", 'pt_BR').format(date);
+  static String formatDate(DateTime date) =>
+      DateFormat("d 'de' MMMM 'de' yyyy", 'pt_BR').format(date);
 
-  static String formatDateShort(DateTime date) => DateFormat('dd/MM/yyyy').format(date);
+  static String formatDateShort(DateTime date) =>
+      DateFormat('dd/MM/yyyy').format(date);
 
-  static String formatDecimal4(double value) => value.toStringAsFixed(4).replaceAll('.', ',');
+  static String formatDecimal4(double value) =>
+      value.toStringAsFixed(4).replaceAll('.', ',');
 
-  static String formatDecima3(double value) => value.toStringAsFixed(3).replaceAll('.', ',');
+  static String formatDecima3(double value) =>
+      value.toStringAsFixed(3).replaceAll('.', ',');
 
-  static String normalizeDecimalInput(String value) => value.trim().replaceAll(',', '.');
+  static String normalizeDecimalInput(String value) =>
+      value.trim().replaceAll(',', '.');
 
   static String normalizeCurrencyInput(String value) {
-    return value.trim().replaceAll('R\$', '').replaceAll(' ', '').replaceAll('.', '').replaceAll(',', '.');
+    return value
+        .trim()
+        .replaceAll('R\$', '')
+        .replaceAll(' ', '')
+        .replaceAll('.', '')
+        .replaceAll(',', '.');
   }
 
   static double parseDecimal(String value) {
@@ -111,5 +128,6 @@ class AppFormatters {
     return double.tryParse(normalized);
   }
 
-  static String formatTime(DateTime date) => DateFormat('HH:mm').format(date.toLocal());
+  static String formatTime(DateTime date) =>
+      DateFormat('HH:mm').format(date.toLocal());
 }

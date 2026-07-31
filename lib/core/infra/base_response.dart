@@ -14,8 +14,10 @@ class BaseResponse<T> {
 
   BaseResponse.none() : status = ResponseStatus.none;
   BaseResponse.loading() : status = ResponseStatus.loading;
-  BaseResponse.success({this.data, this.statusCode}) : status = ResponseStatus.success;
-  BaseResponse.error(this.statusCode, {this.error}) : status = ResponseStatus.error;
+  BaseResponse.success({this.data, this.statusCode})
+      : status = ResponseStatus.success;
+  BaseResponse.error(this.statusCode, {this.error})
+      : status = ResponseStatus.error;
 
   BaseResponse.genericError()
       : status = ResponseStatus.error,

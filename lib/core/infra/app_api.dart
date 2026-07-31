@@ -18,7 +18,9 @@ class AppApi implements BaseApi {
 
   static String _resolveBaseUrl() {
     final String envBaseUrl = AppEnv.apiBaseUrl;
-    final String normalized = envBaseUrl.endsWith('/') ? envBaseUrl.substring(0, envBaseUrl.length - 1) : envBaseUrl;
+    final String normalized = envBaseUrl.endsWith('/')
+        ? envBaseUrl.substring(0, envBaseUrl.length - 1)
+        : envBaseUrl;
     return normalized;
   }
 
@@ -28,7 +30,10 @@ class AppApi implements BaseApi {
       BaseOptions(
         contentType: 'application/json',
         responseType: ResponseType.json,
-        headers: <String, dynamic>{'Content-Type': 'application/json'},
+        headers: <String, dynamic>{
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
         baseUrl: _baseUrl!,
         connectTimeout: const Duration(seconds: 30),
         receiveTimeout: const Duration(seconds: 30),
@@ -57,7 +62,8 @@ class AppApi implements BaseApi {
     return _dio!;
   }
 
-  BaseResponse<Map<String, dynamic>> processSuccess(Response<dynamic> response) {
+  BaseResponse<Map<String, dynamic>> processSuccess(
+      Response<dynamic> response) {
     final dynamic data = response.data;
     Map<String, dynamic> payload;
 
@@ -73,7 +79,8 @@ class AppApi implements BaseApi {
       'Request Success [${response.statusCode}] ${response.requestOptions.method} '
       '${response.requestOptions.path}',
     );
-    return BaseResponse<Map<String, dynamic>>.success(statusCode: response.statusCode, data: payload);
+    return BaseResponse<Map<String, dynamic>>.success(
+        statusCode: response.statusCode, data: payload);
   }
 
   void _redirectProtectedFlowIfNeeded(String errorCode) {
@@ -108,8 +115,10 @@ class AppApi implements BaseApi {
                     : statusCode != null && statusCode >= 500
                         ? ResponseErrorCodes.SERVER_ERROR
                         : exception.type == DioExceptionType.connectionError ||
-                                exception.type == DioExceptionType.connectionTimeout ||
-                                exception.type == DioExceptionType.receiveTimeout ||
+                                exception.type ==
+                                    DioExceptionType.connectionTimeout ||
+                                exception.type ==
+                                    DioExceptionType.receiveTimeout ||
                                 exception.type == DioExceptionType.sendTimeout
                             ? ResponseErrorCodes.NETWORK_ERROR
                             : ResponseErrorCodes.GENERIC_ERROR;
@@ -120,10 +129,16 @@ class AppApi implements BaseApi {
       final dynamic nestedError = responseData['error'];
       if (nestedError is Map) {
         errorCode = nestedError['code']?.toString() ?? fallbackErrorCode;
-        message = (nestedError['message'] ?? responseData['message'] ?? 'Erro na requisição').toString();
+        message = (nestedError['message'] ??
+                responseData['message'] ??
+                'Erro na requisição')
+            .toString();
       } else {
         errorCode = responseData['code']?.toString() ?? fallbackErrorCode;
-        message = (responseData['message'] ?? responseData['error'] ?? 'Erro na requisição').toString();
+        message = (responseData['message'] ??
+                responseData['error'] ??
+                'Erro na requisição')
+            .toString();
       }
     } else if (exception.message != null) {
       message = exception.message!;
@@ -135,7 +150,8 @@ class AppApi implements BaseApi {
 
     _redirectProtectedFlowIfNeeded(errorCode);
 
-    logDebug('Request Error [$statusCode] ${exception.requestOptions.method} $requestPath: $message');
+    logDebug(
+        'Request Error [$statusCode] ${exception.requestOptions.method} $requestPath: $message');
 
     return BaseResponse<Map<String, dynamic>>.error(
       statusCode,
