@@ -1,0 +1,35 @@
+{
+  "info": {
+    "name": "Doutor-IE API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {"key": "baseUrl", "value": "http://SEU_HOST:8080/api/v1"},
+    {"key": "token", "value": "COLE_O_TOKEN_DO_LOGIN"},
+    {"key": "bookId", "value": "1"}
+  ],
+  "item": [
+    {
+      "name": "Autenticação",
+      "item": [{
+        "name": "Login",
+        "request": {
+          "method": "POST",
+          "header": [{"key": "Content-Type", "value": "application/json"}],
+          "body": {"mode": "raw", "raw": "{\n  \"email\": \"seu@email.com\",\n  \"senha\": \"123456\"\n}"},
+          "url": "{{baseUrl}}/auth/login"
+        }
+      }]
+    },
+    {
+      "name": "Livros",
+      "item": [
+        {"name": "Listar livros", "request": {"method": "GET", "header": [{"key": "Authorization", "value": "Bearer {{token}}"}], "url": "{{baseUrl}}/livros"}},
+        {"name": "Buscar livro", "request": {"method": "GET", "header": [{"key": "Authorization", "value": "Bearer {{token}}"}], "url": "{{baseUrl}}/livros/{{bookId}}"}},
+        {"name": "Cadastrar livro", "request": {"method": "POST", "header": [{"key": "Authorization", "value": "Bearer {{token}}"}, {"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"titulo\": \"Livro 01\",\n  \"indices\": [\n    {\n      \"titulo\": \"indice 1\",\n      \"pagina\": 2,\n      \"subindices\": [\n        {\n          \"titulo\": \"sub-indice 1.1\",\n          \"pagina\": 3,\n          \"subindices\": [\n            {\"titulo\": \"sub-indice 1.1.1\", \"pagina\": 4, \"subindices\": []}\n          ]\n        },\n        {\"titulo\": \"sub-indice 1.2\", \"pagina\": 5, \"subindices\": []}\n      ]\n    },\n    {\"titulo\": \"indice 2\", \"pagina\": 6, \"subindices\": []}\n  ]\n}"}, "url": "{{baseUrl}}/livros"}},
+        {"name": "Editar livro", "request": {"method": "PUT", "header": [{"key": "Authorization", "value": "Bearer {{token}}"}, {"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"titulo\": \"Livro 01 editado\",\n  \"indices\": [{\"titulo\": \"indice 1 editado\", \"pagina\": 2, \"subindices\": []}]\n}"}, "url": "{{baseUrl}}/livros/{{bookId}}"}},
+        {"name": "Excluir livro", "request": {"method": "DELETE", "header": [{"key": "Authorization", "value": "Bearer {{token}}"}], "url": "{{baseUrl}}/livros/{{bookId}}"}}
+      ]
+    }
+  ]
+}
